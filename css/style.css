@@ -1,0 +1,112 @@
+HTML CSSResult Skip Results Iframe
+EDIT ON
+.form {
+  font-family: Helvetica, sans-serif;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 16px;
+  background: #f7f7f7;
+}
+.form h1 {
+  background: #5868bf;
+  padding: 20px 0;
+  font-weight: 300;
+  text-align: center;
+  color: #fff;
+  margin: -16px -16px 16px -16px;
+  font-size:  25px;
+}
+.form input[type="text"],
+.form input[type="url"] {
+  box-sizing: border-box;
+  width: 100%;
+  background: #fff;
+  margin-bottom: 4%;
+  border: 1px solid #ccc;
+  padding: 3%;
+  color: #555;
+}
+.form input[type="text"]:focus,
+.form input[type="url"]:focus {
+  box-shadow: 0 0 5px #EF7B0B;
+  /* box-shadow: 0 0 5px #5868bf; */
+  padding: 3%;
+  border: 1px solid #EF7B0B;
+  /* border: 1px solid #5868bf; */
+}
+
+button {
+  display: block;
+  text-align: center;  
+  margin: 0 auto;
+  margin-top: 10vh;
+  
+  /* height:20px;  */
+  /* width:100px;  */
+  /* position:relative; */
+  
+  /* position: absolute; */
+  /* top: 50%; */
+  /* left: 50%; */
+  width: 150px;
+  padding: 2em;
+  background: #07549F;
+  /* background: #5868bf; */
+  border-bottom: 2px solid #EF7B0B;
+  /* border-bottom: 2px solid #5868bf; */
+  color: #fff;
+  cursor: pointer;
+}
+
+/* .form button {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 150px;
+  margin: 0 auto;
+  padding: 3%;
+  background: #5868bf;
+  border-bottom: 2px solid #5868bf;
+  border-top-style: none;
+  border-right-style: none;
+  border-left-style: none;
+  color: #fff;
+  cursor: pointer;
+} */
+
+.form button:hover {
+  background: rgba(88,104,191, 0.5);
+}
+/* #qrcode-container{
+  display:none;
+} */
+
+.qrText{
+  text-align: center;
+  margin-top: 3em;
+  min-height: 2em;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, sans-serif;
+}
+
+.qrcode{
+  margin-top: 15vh;
+  min-height: 150px;
+  padding: 16px;
+}
+
+.qrcode img{
+  margin: 0 auto;
+}
+
+.container-overview{
+  text-align: center;
+  margin-top: 5em;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container-overview div:before{
+  content: ' ';
+  display: block;
+  height: 4em;
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>QR Scan</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/nav.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/style.css'>
+    <script src="https://unpkg.com/html5-qrcode@2.0.9/dist/html5-qrcode.min.js"></script>
+</head>
+<body>
+    <!-- https://blog.minhazav.dev/research/html5-qrcode.html#scan-using-file -->
+    <!-- <h1>ID-In</h1> -->
+    <div id="qr-reader" style="width: 95%"></div>
+
+    <form action="" class="form">
+        <input type="text" id="mscan" name="mscan" placeholder="QR-ID" />
+        <div>
+        <button type="button" onclick="sendQR()">Send</button>
+        </div>
+    </form>
+
+<script type="text/javascript">
+    
+    if ("chatArrStorage" in sessionStorage) {
+        var chatArr = JSON.parse(sessionStorage.getItem('chatArrStorage'));    
+        console.log("SUCCESS")
+        console.log(chatArr);
+    }else { console.log("FAILURE, chill it´s just an empty sessionStorage ;)"); var chatArr = [];}
+
+
+    function sendQR(){
+        var tmp = document.getElementById("mscan").value;
+        if ( tmp.length > 5 ) {
+            
+            // console.log(tmp);
+            chatArr.push([tmp]);
+            console.log(chatArr);
+            sessionStorage.setItem('chatArrStorage', JSON.stringify(chatArr));
+            // window.location.href="chat.html";
+        }
+    };
+
+</script>
+
+<!-- nav-bar -->
+<div class="navbar">
+    <a href="./index.html"><i class="fa fa-fw fa-bars"></i></a> 
+    <a href="./chat.html"><i class="fa fa-fw fa-comments"></i></a>
+    <a href="./qrgen.html"><i class="fa fa-fw fa-qrcode"></i></a>
+    <a class="active" href="./qrscan.html"><i class="fa fa-fw fa-camera"></i></a> 
+  </div>
+
+
+<script type='text/javascript'>
+
+function onScanSuccess(decodedText, decodedResult) {
+    console.log(`Code scanned = ${decodedText}`, decodedResult);
+}
+var html5QrcodeScanner = new Html5QrcodeScanner(
+	"qr-reader", { fps: 10, qrbox: 250 });
+html5QrcodeScanner.render(onScanSuccess);
+
+</script>
+</body>
+</html>

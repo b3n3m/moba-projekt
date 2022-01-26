@@ -1,0 +1,112 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>QR-Gen</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/nav.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/style.css'>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    <!-- <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"> -->
+    <!-- <script src="https://raw.githubusercontent.com/mebjas/html5-qrcode/master/minified/html5-qrcode.min.js"></script> -->
+  </head>
+  <body>
+    <h1>ID-Out</h1
+    <div class="form">
+      <!-- <h1>QR Code using qrcodejs</h1> -->
+      <!-- <form> -->
+        <!-- <input type="url" id="website" name="website" placeholder="https://webisora.com" /> -->
+        <!-- <div>
+          <button type="button" onclick="generateQRCode()">
+            Generate QR Code
+          </button>
+        </div>
+      </form> -->
+
+      
+      <!-- <div id="randomNr"></div>
+      
+      <div id="qrcode-container">
+        <h4>With some styles</h4>
+        <div id="qrcode-2" class="qrcode"></div>
+      </div> -->
+      
+      
+    </div>
+    
+    <div>
+
+      <div id="randomNr"></div>
+      
+      <div id="qrcode-container">
+        <!-- <h4>With some styles</h4> -->
+        <div id="qrcode-2" class="qrcode"></div>
+        <div id="rChatID" class="qrText"></div>
+      </div>
+      <button type="button" onclick="generateQRCode()">Generate <br/>QR Code</button>
+     
+      <!-- <div class="container-btn">
+    </div> -->
+    </div>
+    
+    
+    <!-- qr-gen javascript -->
+    <script type="text/javascript">
+      
+      // generateRandom
+        function generateRandom(length){
+          var result           = '';
+          var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+          for (let i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random()*characters.length))
+          }
+          if (length < 5) {
+            document.getElementById("randomNr").innerHTML=result;
+          }
+          result+="."+Date.now();
+          return result;
+        };
+        
+          
+          
+          function generateQRCode() {
+            // let website = document.getElementById("website").value;
+            // if (website === "") {
+              randomChatID = generateRandom(10);
+              // password = generateRandom(4);
+            // }
+            if (randomChatID) {
+              let qrcodeContainer2 = document.getElementById("qrcode-2");
+              qrcodeContainer2.innerHTML = "";
+              new QRCode(qrcodeContainer2, {
+                text: randomChatID,
+                width: 128,
+                height: 128,
+                colorDark: "#5868bf",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+              });
+              document.getElementById("rChatID").innerHTML = randomChatID;
+              document.getElementById("qrcode-container").style.display = "block";
+            } else {
+              alert("Please enter a valid URL");
+            }
+          }
+          </script>
+
+
+<!-- nav-bar -->
+    <div class="navbar">
+      <a href="./index.html"><i class="fa fa-fw fa-bars"></i></a> 
+      <a href="./chat.html"><i class="fa fa-fw fa-comments"></i></a>
+      <a class="active" href="./qrgen.html"><i class="fa fa-fw fa-qrcode"></i></a>
+      <a href="./qrscan.html"><i class="fa fa-fw fa-camera"></i></a> 
+    </div>
+    
+  </body>
+  </html>

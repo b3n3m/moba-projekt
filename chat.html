@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Chat</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/nav.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/table.css'>
+</head>
+<body onload="GenerateTable()">
+
+    <h1>Chatübersicht</h1>
+    
+        <div id="dvTable" class="styled-table"></div>
+
+    <script type="text/javascript">
+        // https://www.aspsnippets.com/Articles/Create-dynamic-Table-in-HTML-at-runtime-using-JavaScript.aspx#:~:text=First%20a%20dynamic%20HTML%20Table%20is%20created%20using%20JavaScript%20createElement%20method.&text=The%20Header%20Row%20will%20be,the%20Header%20column%20text%20values.&text=Then%20inside%20each%20Row%20a,using%20the%20Table%20insertCell%20method.
+        function GenerateTable() {
+        var table = document.createElement("TABLE");
+        // table.border = "1";
+        table.width = "90%";
+            
+        var chatArr = JSON.parse(sessionStorage.getItem('chatArrStorage'));
+
+        //Get the count of columns.
+        var columnCount = chatArr[0].length+1;
+ 
+        //Add the header row.
+        // var row = table.insertRow(-1);
+        // for (var i = 0; i < columnCount; i++) {
+        //     var headerCell = document.createElement("TH");
+        //     headerCell.innerHTML = chatArr[0][i];
+        //     row.appendChild(headerCell);
+        // }
+ 
+        //Add the data rows.
+        for (var i = 0; i < chatArr.length; i++) {
+            row = table.insertRow(-1);
+            for (var j = 0; j < columnCount; j++) {
+                var cell = row.insertCell(-1);
+                if (j==1) {
+                    cell.innerHTML = "<a href=\"./qrscan.html\"><i class=\"fa fa-fw fa-ellipsis-h\"></a>"
+                } else {
+                cell.innerHTML = chatArr[i][j];
+                }
+            }
+        }
+ 
+        var dvTable = document.getElementById("dvTable");
+        dvTable.innerHTML = "";
+        dvTable.appendChild(table);
+    }
+
+    </script>
+    <!-- <a href="./qrscan.html"><i class="fa fa-fw fa-ellipsis-h"></i></a>  -->
+
+
+<!-- nav-bar -->
+<div class="navbar">
+    <a href="./index.html"><i class="fa fa-fw fa-bars"></i></a> 
+    <a class="active" href="./chat.html"><i class="fa fa-fw fa-comments"></i></a>
+    <a href="./qrgen.html"><i class="fa fa-fw fa-qrcode"></i></a>
+    <a href="./qrscan.html"><i class="fa fa-fw fa-camera"></i></a> 
+  </div>
+</body>
+</html>
