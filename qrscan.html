@@ -12,8 +12,11 @@
 </head>
 <body>
     <!-- https://blog.minhazav.dev/research/html5-qrcode.html#scan-using-file -->
-    <!-- <h1>ID-In</h1> -->
-    <div id="qr-reader" style="width: 95%"></div>
+    <h1>ID-In</h1>
+    <!-- <div id="qr-reader" style="width: 95%"></div> -->
+    <a href="https://scanapp.org/#reader" target="_blank">
+        <img src="img/qrscan.png" alt="" style="margin-left: auto; margin-right: auto; display: block; margin-bottom: 3em; margin-top: 1em;">
+    </a>
 
     <form action="" class="form">
         <input type="text" id="mscan" name="mscan" placeholder="QR-ID" />
@@ -26,20 +29,34 @@
     
     if ("chatArrStorage" in sessionStorage) {
         var chatArr = JSON.parse(sessionStorage.getItem('chatArrStorage'));    
-        console.log("SUCCESS")
-        console.log(chatArr);
-    }else { console.log("FAILURE, chill it´s just an empty sessionStorage ;)"); var chatArr = [];}
+        // console.log("SUCCESS")
+        // console.log(chatArr);
+    }else { 
+        // console.log("FAILURE, chill it´s just an empty sessionStorage ;)"); 
+        var chatArr = [];
+    }
 
 
     function sendQR(){
         var tmp = document.getElementById("mscan").value;
-        if ( tmp.length > 5 ) {
+        
+        if ("rIdArrStorage" in sessionStorage) {
+            var rIDArr = JSON.parse(sessionStorage.getItem('rIdArrStorage'));
+            console.log(rIDArr)
+        } else {
+            var rIDArr = [];
+            console.log("New ridarr")
+        }
+
+        if ( tmp.length > 10 && JSON.stringify(rIDArr).includes(tmp) ) {
             
-            // console.log(tmp);
             chatArr.push([tmp]);
             console.log(chatArr);
             sessionStorage.setItem('chatArrStorage', JSON.stringify(chatArr));
-            // window.location.href="chat.html";
+            sessionStorage.setItem('rIdArrStorage', JSON.stringify(rIDArr));
+            window.location.href="chat.html";
+        }else { 
+            alert("ID nicht erkannt, noch ein versuch " + String.fromCodePoint(0x1F609));
         }
     };
 
@@ -56,12 +73,12 @@
 
 <script type='text/javascript'>
 
-function onScanSuccess(decodedText, decodedResult) {
-    console.log(`Code scanned = ${decodedText}`, decodedResult);
-}
-var html5QrcodeScanner = new Html5QrcodeScanner(
-	"qr-reader", { fps: 10, qrbox: 250 });
-html5QrcodeScanner.render(onScanSuccess);
+// function onScanSuccess(decodedText, decodedResult) {
+//     console.log(`Code scanned = ${decodedText}`, decodedResult);
+// }
+// var html5QrcodeScanner = new Html5QrcodeScanner(
+// 	"qr-reader", { fps: 10, qrbox: 250 });
+// html5QrcodeScanner.render(onScanSuccess);
 
 </script>
 </body>

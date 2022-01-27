@@ -23,14 +23,14 @@ EDIT ON
   background: #fff;
   margin-bottom: 4%;
   border: 1px solid #ccc;
-  padding: 3%;
+  padding: 1em;
   color: #555;
 }
 .form input[type="text"]:focus,
 .form input[type="url"]:focus {
   box-shadow: 0 0 5px #EF7B0B;
   /* box-shadow: 0 0 5px #5868bf; */
-  padding: 3%;
+  padding: 1em;
   border: 1px solid #EF7B0B;
   /* border: 1px solid #5868bf; */
 }

@@ -62,6 +62,12 @@
         function generateRandom(length){
           var result           = '';
           var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+          if ("rIdArrStorage" in sessionStorage) {
+            var rIDArr = JSON.parse(sessionStorage.getItem('rIdArrStorage'));
+        } else {
+            var rIDArr = [];
+        }
+
           for (let i = 0; i < length; i++) {
             result += characters.charAt(Math.floor(Math.random()*characters.length))
           }
@@ -69,6 +75,10 @@
             document.getElementById("randomNr").innerHTML=result;
           }
           result+="."+Date.now();
+          
+          rIDArr.push([result]);
+          sessionStorage.setItem('rIdArrStorage', JSON.stringify(rIDArr));
+          
           return result;
         };
         
@@ -87,8 +97,9 @@
                 text: randomChatID,
                 width: 128,
                 height: 128,
-                colorDark: "#5868bf",
+                colorDark: "#07549F",
                 colorLight: "#ffffff",
+                // colorLight: "#EF7B0B",
                 correctLevel: QRCode.CorrectLevel.H
               });
               document.getElementById("rChatID").innerHTML = randomChatID;
