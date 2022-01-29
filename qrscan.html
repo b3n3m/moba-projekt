@@ -39,7 +39,7 @@
 
     function sendQR(){
         var tmp = document.getElementById("mscan").value;
-        
+
         if ("rIdArrStorage" in sessionStorage) {
             var rIDArr = JSON.parse(sessionStorage.getItem('rIdArrStorage'));
             console.log(rIDArr)
@@ -51,7 +51,7 @@
         if ( tmp.length > 10 && JSON.stringify(rIDArr).includes(tmp) ) {
             
             chatArr.push([tmp]);
-            console.log(chatArr);
+            rIDArr.splice([rIDArr.findIndex(e => e === tmp)],1)
             sessionStorage.setItem('chatArrStorage', JSON.stringify(chatArr));
             sessionStorage.setItem('rIdArrStorage', JSON.stringify(rIDArr));
             window.location.href="chat.html";
