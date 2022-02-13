@@ -45,7 +45,7 @@
         // if ( tmp.length > 10 && JSON.stringify(rIDArr).includes(tmp) ) {
         var index=rIDArr.findIndex(e => e === tmp);
         if ( tmp.length > 10 && index >= 0 ) {
-            chatArr.push([tmp]);
+            chatArr.push(tmp);
             rIDArr.splice(index,1)
             sessionStorage.setItem('chatArrStorage', JSON.stringify(chatArr));
             sessionStorage.setItem('rIdArrStorage', JSON.stringify(rIDArr));
